@@ -32,7 +32,7 @@ steps:
         - docker pull mahendra968/drone-demo:latest
         - docker stop drone-demo || true
         - docker rm drone-demo || true
-        - docker run -d --name drone-demo -p 3000:3000 mahendra968/drone-demo:latest
+        - docker run -d --name drone-demo -p 3001:3001 mahendra968/drone-demo:latest
     when:
       branch:
         - main
