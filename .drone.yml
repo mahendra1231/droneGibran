@@ -7,9 +7,9 @@ steps:
   image: plugins/docker
   settings:
     username:
-      from_secret: docker_username
+      from_secret: DOCKER_USERNAME
     password:
-      from_secret: docker_password
+      from_secret: DOCKER_PASSWORD
     repo: mahendra968/drone-demo
     tags:
       - latest
@@ -22,9 +22,9 @@ steps:
   image: appleboy/drone-ssh
   settings:
     host:
-      from_secret: ssh_host
+      from_secret: SSH_HOST
     username:
-      from_secret: ssh_username
+      from_secret: SSH_USERNAME
     key:
       from_secret: ssh_key
     port: 22
