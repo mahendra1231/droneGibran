@@ -10,7 +10,7 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    repo: mahendra968/drone-demo
+    repo: mahendra968/droneGibran
     tags:
       - latest
       - ${DRONE_COMMIT_SHA:0:7}
@@ -29,10 +29,10 @@ steps:
       from_secret: ssh_key
     port: 22
     script:
-      - docker pull mahendra968/drone-demo:latest
+      - docker pull mahendra968/droneGibran:latest
       - docker stop drone-demo || true
       - docker rm drone-demo || true
-      - docker run -d --name drone-demo -p 3000:3000 mahendra968/drone-demo:latest
+      - docker run -d --name drone-demo -p 3000:3000 mahendra968/droneGibran:latest
   when:
     branch:
       - main
