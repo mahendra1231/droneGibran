@@ -29,10 +29,10 @@ steps:
       from_secret: ssh_key
     port: 22
     script:
-      - docker pull mahendra968/droneGibran:latest
+      - docker pull mahendra968/dronegibran:latest
       - docker stop drone-demo || true
       - docker rm drone-demo || true
-      - docker run -d --name drone-demo -p 3000:3000 mahendra968/droneGibran:latest
+      - docker run -d --name drone-demo -p 3000:3000 mahendra968/dronegibran:latest
   when:
     branch:
       - main
