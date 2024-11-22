@@ -1,0 +1,38 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: build
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: your-docker-username/drone-demo
+    tags:
+      - latest
+      - ${DRONE_COMMIT_SHA:0:7}
+  when:
+    branch:
+      - main
+
+- name: deploy
+  image: appleboy/drone-ssh
+  settings:
+    host:
+      from_secret: ssh_host
+    username:
+      from_secret: ssh_username
+    key:
+      from_secret: ssh_key
+    port: 22
+    script:
+      - docker pull mahendra968/drone-demo:latest
+      - docker stop drone-demo || true
+      - docker rm drone-demo || true
+      - docker run -d --name drone-demo -p 3000:3000 mahendra968/drone-demo:latest
+  when:
+    branch:
+      - main
