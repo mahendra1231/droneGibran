@@ -10,7 +10,7 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    repo: your-docker-username/drone-demo
+    repo: mahendra968/drone-demo
     tags:
       - latest
       - ${DRONE_COMMIT_SHA:0:7}
